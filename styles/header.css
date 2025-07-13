@@ -116,14 +116,22 @@ body {
 }
 .amazon-header-right-section .orders-link{
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
+  justify-content: start;
   color: var(--white-color);
-  font-size: var(--font-size-m);
   text-decoration: none;
+  padding: 5px;
 
 }
+.amazon-header-right-section .orders-link:hover{
+  border: 2px solid var(--white-color);
+}
+.amazon-header-right-section .orders-link .returns-text{
+  font-size: var(--font-size-s);
+}
 .amazon-header-right-section .orders-link .orders-text{
+  font-size: var(--font-size-s);
   font-weight: bold;
 }
 .amazon-header-right-section .cart-link{
@@ -133,9 +141,11 @@ body {
   color: var(--white-color);
   font-size: var(--font-size-m);
   text-decoration: none;
-  border: 2px solid white;
   padding: 5px;
   gap: 2px;
+}
+.amazon-header-right-section .cart-link:hover{
+  border: 2px solid var(--white-color) ;
 }
 .amazon-header-right-section .cart-link .cart-link-quantity{
   display:flex;
@@ -160,5 +170,8 @@ body {
 .amazon-header-right-section .cart-link  .cart-text{
   padding-top: 20px;
   font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s) ;
 }
+
+
 
