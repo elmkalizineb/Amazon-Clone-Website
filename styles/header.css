@@ -177,11 +177,34 @@ body {
     justify-content: space-between;
     width: 100%;
     margin-top: 10px;
-    
   }
-  .amazon-header-right-section .cart-link{
+  .amazon-header-right-section .cart-link {
     margin-right: 20px;
     /* border: 1px solid red ; */
   }
 }
-
+@media (max-width: 500px) {
+  /* mobile*/
+  .amazon-header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .amazon-header-left-section {
+    width: 50%;
+  }
+  .amazon-header-middle-section {
+    width: 85%;
+    margin: 0;
+    padding-right: 50px;
+  }
+  .search-bar {
+    max-width: 80%;
+  }
+  .amazon-header-right-section {
+    justify-content: space-between;
+  }
+  .amazon-logo-img {
+    max-width: 100px;
+    max-height: 70px;
+  }
+}
