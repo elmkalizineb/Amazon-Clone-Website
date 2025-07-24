@@ -142,8 +142,7 @@ body {
   position: absolute;
   top: -8px;
   left: 25px;
-  background-color: var(--secondary-color);
-  color: black;
+  color: var(--secondary-color);
   font-weight: bold;
   border-radius: 50%;
   width: 22px;
@@ -152,6 +151,8 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
+  padding-right: 15px;
+  /* border: 1px solid red; */
 }
 .amazon-header-right-section .cart-link .cart-link-quantity .cart-icon {
   width: 50px;

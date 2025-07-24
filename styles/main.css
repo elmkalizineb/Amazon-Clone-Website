@@ -50,7 +50,7 @@
   justify-content: start;
   border: 1px solid gray;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 }
 /* Add hover effect on product card*/
 .main .main-content .product:hover {
@@ -118,8 +118,29 @@
 .main .main-content .product .add-to-cart {
   width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   margin-top: auto;
+}
+
+.add-to-cart-text-hidden{
+  opacity: 0;
+}
+.add-to-cart-text-visible{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: green;
+  /* border: 1px solid black; */
+  opacity: 1;
+}
+.add-to-cart-text img {
+  width: 30px;
+  height: 30px;
+}
+.add-to-cart-text p {
+  color: green;
 }
 .main .main-content .product .add-to-cart button {
    width: 200px;
