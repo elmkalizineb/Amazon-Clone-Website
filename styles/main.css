@@ -83,26 +83,19 @@
 }
 
 .main .main-content .product .product-rating {
-  direction: rtl; /* Right to left for easier selection */
-  unicode-bidi: bidi-override;
-  font-size: 1.4rem;
-  display: inline-flex;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px ;
+}
+.product-rating-stars {
+  width: 100px;
+  margin-right: 6px;
 }
 
-.main .main-content .product .product-rating input {
-  display: none;
-}
-
-.main .main-content .product .product-rating label {
-  color: lightgray;
+.product-rating-count {
+  color: rgb(1, 124, 182);
   cursor: pointer;
-  transition: color 0.2s;
-}
-
-.main .main-content .product .product-rating input:checked ~ label,
-.main .main-content .product .product-rating label:hover,
-.main .main-content .product .product-rating label:hover ~ label {
-  color: gold;
+  margin-top: 3px;
 }
 
 .main .main-content .product .product-price {
