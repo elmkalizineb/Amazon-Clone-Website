@@ -1,28 +1,28 @@
-import { cart , removeFromCart} from '../data/cart.js';
+import { cart, removeFromCart } from '../data/cart.js';
 import { products } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-console.log("Script is running ✅");
-console.log("Cart array:", cart);
-console.log("Products array:", products);
+// console.log("Script is running ✅");
+// console.log("Cart array:", cart);
+// console.log("Products array:", products);
 
 let cartSummaryHtml = '';
 
 cart.forEach((cartItem, index) => {
-//   console.log(`⏳ Processing cart item ${index}:`, cartItem);
+    //   console.log(`⏳ Processing cart item ${index}:`, cartItem);
 
-  const productId = cartItem.productId;
-  const matchingProduct = products.find(product => product.id === productId);
+    const productId = cartItem.productId;
+    const matchingProduct = products.find(product => product.id === productId);
 
-//   if (!matchingProduct) {
-//     console.warn(`⚠️ No matching product for ID: ${productId}`);
-//     return;
-//   }
+    //   if (!matchingProduct) {
+    //     console.warn(`⚠️ No matching product for ID: ${productId}`);
+    //     return;
+    //   }
 
-//   console.log(`✅ Found product: ${matchingProduct.name}`);
+    //   console.log(`✅ Found product: ${matchingProduct.name}`);
 
-  cartSummaryHtml += `
-     <div class="product">
+    cartSummaryHtml += `
+     <div class="product-${matchingProduct.id}">
             <div class="product-delivery-date">
               <div class="delivery-date-text">Delivery : Tuesday , June 21</div>
               <div class="product-info">
@@ -40,7 +40,7 @@ cart.forEach((cartItem, index) => {
                   <div class="product-quantity">
                     <div id="text">Quantity: ${cartItem.quantity}</div>
                     <button class="update-product-btn">Update</button>
-                    <button class="delete-product-btn data-product-id="${matchingProduct.id}"  ">Delete</button>
+                    <button class="delete-product-btn" data-product-id="${matchingProduct.id}">Delete</button>
                   </div>
                 </div>
               </div>
@@ -92,12 +92,17 @@ document.querySelector('.products').innerHTML = cartSummaryHtml;
 
 // console.log("✅ Final cartSummaryHtml:", cartSummaryHtml);
 
-document.querySelectorAll('.delete-product-btn').forEach((btn)=>{
-    btn.addEventListener('click',()=>{
-        // console.log('delete');
+document.querySelectorAll('.delete-product-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+
         const productId = btn.dataset.productId;
         removeFromCart(productId);
-        console.log(cart);
+        // console.log(cart);
 
-    })
+       const container=  document.querySelector(`.product-${productId}`);
+        console.log(container);
+       // remove the element from html page 
+       container.remove();
+
+    });
 });
