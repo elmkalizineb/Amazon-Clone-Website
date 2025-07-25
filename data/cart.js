@@ -29,4 +29,12 @@ export const cart =[
     }
 
 }
+
+export  function removeFromCart(productId){
+    const index =cart.findIndex(item => item.id === productId);
+
+    if(index !==-1){
+        cart.splice(index,1); // remove the item at index
+    }
+}
  
