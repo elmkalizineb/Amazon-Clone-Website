@@ -1,5 +1,6 @@
 import { cart , addToCart} from '../data/cart.js';
 import { products } from '../data/products.js';
+import { formatCurrency } from './utils/money.js';
 
 console.log("Script is running ✅");
 console.log("Cart array:", cart);
@@ -35,7 +36,7 @@ cart.forEach((cartItem, index) => {
                   <div class="product-description">
                     ${matchingProduct.name}
                   </div>
-                  <div class="product-price">$${((matchingProduct.price)/100).toFixed(2)}</div>
+                  <div class="product-price">$${formatCurrency(matchingProduct.priceCents)}</div>
                   <div class="product-quantity">
                     <div id="text">Quantity: ${cartItem.quantity}</div>
                     <button class="update-product-btn">Update</button>
@@ -52,7 +53,7 @@ cart.forEach((cartItem, index) => {
                     type="radio"
                     checked
                     class="delivery-option-input"
-                    name="delivery-option-1"
+                    name="delivery-option-${matchingProduct.id}"
                   />
                   <div>
                     <div class="delivery-option-date">Tuesday, June 21</div>
@@ -63,7 +64,7 @@ cart.forEach((cartItem, index) => {
                   <input
                     type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1"
+                    name="delivery-option-${matchingProduct.id}"
                   />
                   <div>
                     <div class="delivery-option-date">Wednesday, June 15</div>
@@ -74,7 +75,7 @@ cart.forEach((cartItem, index) => {
                   <input
                     type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1"
+                    name="delivery-option-${matchingProduct.id}"
                   />
                   <div>
                     <div class="delivery-option-date">Monday, June 13</div>
