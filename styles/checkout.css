@@ -228,7 +228,7 @@ body {
 }
 
 /*  Order Summary */
-.order-summary {
+.payement-summary {
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
@@ -239,11 +239,11 @@ body {
   box-shadow: 0 0 8px --dark-color;
   border: 1px solid var(--gray-color);
 }
-.order-summary-info {
+.payement-summary-info {
   display: flex;
   justify-content: space-between;
 }
-.order-summary-title {
+.payement-summary-title {
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-semibold);
 }
@@ -276,7 +276,7 @@ body {
     order: 2;
     width: auto;
   }
-  .order-summary {
+  .payement-summary {
     order: 1;
     width: auto;
   }
@@ -303,7 +303,7 @@ body {
     order: 2;
     width: auto;
   }
-  .order-summary {
+  .payement-summary {
     order: 1;
     width: auto;
   }
