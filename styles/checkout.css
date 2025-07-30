@@ -210,6 +210,7 @@ body {
   display: flex;
   align-items: flex-start;
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
 .delivery-option input {
