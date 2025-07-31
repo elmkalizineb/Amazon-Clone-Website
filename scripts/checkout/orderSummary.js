@@ -1,30 +1,26 @@
 import { cart, calculateCartQuantity, removeFromCart, updateDeliveryOption } from '../../data/cart.js';
-import { products } from '../../data/products.js';
+import { getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 // dayjs external libairie (ESM version)
 // ESM = module +  js External libairie 
-import { deliveryOptions, dateToString } from '../../data/deliveryOptions.js';
+import { deliveryOptions, dateToString, getDeliveryOption } from '../../data/deliveryOptions.js';
+import { renderPayementSummary } from './payementSummary.js';
 
-export function renderProductsList(){
+export function renderProductsList() {
 
   document.querySelector('.items-text').innerHTML = ` ( ${calculateCartQuantity()} )`;
 
   let cartSummaryHtml = '';
 
-  cart.forEach((cartItem, index) => {
+  cart.forEach((cartItem) => {
 
-    const productId = cartItem.productId;
-    const matchingProduct = products.find(product => product.id === productId);
+    const matchingProduct = getProduct(cartItem.productId);
 
     // get the  delivery option selected  
     const deliveryOptionId = cartItem.deliveryOptionId;
-    let deliveryOption;
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
-    deliveryOptions.forEach((option) => {
-      if (option.id === deliveryOptionId) {
-        deliveryOption = option;
-      }
-    })
+
 
     const dateString = deliveryOption ? dateToString(deliveryOption) : 'No date available';
 
@@ -114,6 +110,7 @@ export function renderProductsList(){
       container.remove();
       document.querySelector('.items-text').innerHTML = ` ( ${calculateCartQuantity()} )`;
     });
+
   });
 
   // update button 
@@ -148,6 +145,7 @@ export function renderProductsList(){
       //update displayed quantity 
       container.querySelector('#text').textContent = `Quantity : ${newQuantity}`;
       document.querySelector('.items-text').innerHTML = `( ${calculateCartQuantity()})`;
+
 
     })
 
