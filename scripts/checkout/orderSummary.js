@@ -105,9 +105,10 @@ export function renderProductsList() {
       // console.log(cart);
 
       const container = document.querySelector(`.product-${productId}`);
-      console.log(container);
+      // console.log(container);
       // remove the element from html page 
       container.remove();
+      renderPayementSummary();
       document.querySelector('.items-text').innerHTML = ` ( ${calculateCartQuantity()} )`;
     });
 
@@ -131,7 +132,7 @@ export function renderProductsList() {
 
       const productId = link.dataset.productId;
       const container = document.querySelector(`.product-${productId}`);
-      const newQuantity = Number(container.querySelector('.quantity-input').value``);
+      const newQuantity = Number(container.querySelector('.quantity-input').value);
 
       if (newQuantity > 0) {
         const cartItem = cart.find(item => item.productId === productId);
@@ -141,7 +142,8 @@ export function renderProductsList() {
       }
       localStorage.setItem('cart', JSON.stringify(cart)); // save updated cart 
       container.classList.remove('is-editing-quantity');
-
+      renderProductsList();
+      renderPayementSummary();
       //update displayed quantity 
       container.querySelector('#text').textContent = `Quantity : ${newQuantity}`;
       document.querySelector('.items-text').innerHTML = `( ${calculateCartQuantity()})`;
@@ -157,6 +159,7 @@ export function renderProductsList() {
       const deliveryOptionId = element.dataset.deliveryOptionId;
       updateDeliveryOption(productId, deliveryOptionId);
       renderProductsList(); // to render the page automatically 
+      renderPayementSummary();
 
     });
   });
