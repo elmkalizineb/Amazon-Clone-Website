@@ -1,6 +1,5 @@
 // using Object-Oriented Programming ( classes )
 class Cart {
-
     cartItems = undefined;
     #localStorageKey = undefined; // # for private proprety 
 
@@ -91,14 +90,10 @@ class Cart {
     }
 }
 
-const cart = new Cart('cart-opp'); // constructor
-const businessCart = new Cart('cart-business');
+export const cart =  new Cart('cart');
 
 
 
-console.log(cart);
-console.log(businessCart);
-console.log(businessCart instanceof Cart);
 
 
 
