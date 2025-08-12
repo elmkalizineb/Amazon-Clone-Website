@@ -39,7 +39,7 @@ export function renderProductsList() {
                     <div class="product-description">
                       ${matchingProduct.name}
                     </div>
-                    <div class="product-price">$${formatCurrency(matchingProduct.priceCents)}</div>
+                    <div class="product-price">${matchingProduct.getPrice()}</div>
                     <div class="product-quantity">
                       <div id="text">Quantity: ${cartItem.quantity}</div>
                         <a class="update-product-btn"  data-product-id="${matchingProduct.id}" >Update</a>
