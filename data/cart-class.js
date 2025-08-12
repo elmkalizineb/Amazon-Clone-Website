@@ -1,11 +1,16 @@
-// using Object-Oriented Programming 
+// using Object-Oriented Programming ( classes )
+class Cart {
 
-function Cart(localStorageKey){ // we use the function to create multiple instances of cart 
-    const cart = {
+    cartItems = undefined;
+    localStorageKey = undefined;
 
-    cartItems: undefined,
-    loadFromStorage: function () {
-        this.cartItems = JSON.parse(localStorage.getItem(localStorageKey));
+    constructor(localStorageKey) {
+        this.localStorageKey = localStorageKey;
+        this.loadFromStorage();
+    }
+
+    loadFromStorage() {
+        this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
 
         if (!this.cartItems) { // cart === null 
             this.cartItems = [
@@ -21,10 +26,11 @@ function Cart(localStorageKey){ // we use the function to create multiple instan
                 }
             ];
         }
-    },
+    }
     saveToStorage() { // shortcut for declaring function 
-        localStorage.setItem(localStorageKey, JSON.stringify(this.cartItems));
-    },
+        localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    }
+
     addToCart(productId) {
         let matchingItem;
 
@@ -45,14 +51,14 @@ function Cart(localStorageKey){ // we use the function to create multiple instan
         }
 
         this.saveToStorage();
-    },
+    }
     calculateCartQuantity() {
         let totatQuantity = 0;
         this.cartItems.forEach((cartItem) => {
             totatQuantity += cartItem.quantity;
         });
         return totatQuantity;
-    },
+    }
     removeFromCart(productId) {
         const newCart = [];
 
@@ -67,7 +73,7 @@ function Cart(localStorageKey){ // we use the function to create multiple instan
         this.cart.splice(0, cart.length, ...newCart);
 
         this.saveToStorage();
-    },
+    }
 
     updateDeliveryOption(productId, deliveryOptionId) {
 
@@ -84,17 +90,16 @@ function Cart(localStorageKey){ // we use the function to create multiple instan
 
     }
 }
-return cart;
-}
 
-const cart =Cart('cart-oop'); //  like a constructor
-const businessCart =  Cart('cart-business');
+const cart = new Cart('cart-opp'); // constructor
+const businessCart = new Cart('cart-business');
 
-cart.loadFromStorage();
-businessCart.loadFromStorage();
+
 
 console.log(cart);
 console.log(businessCart);
+console.log(businessCart instanceof Cart);
+
 
 
 
