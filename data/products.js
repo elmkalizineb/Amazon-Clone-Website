@@ -105,6 +105,7 @@ export function loadProducts(fun){
       return new Product(productDetails);
     });
     console.log('load products');
+    // console.log('Type of fun:', typeof fun);
     fun();
   });
 
