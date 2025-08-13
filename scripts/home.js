@@ -1,16 +1,22 @@
 import {cart, addToCart , calculateCartQuantity} from '../data/cart.js'; // using module 
-import { products } from '../data/products.js';
+import { products ,loadProducts } from '../data/products.js';
 import { formatCurrency } from './utils/money.js';
 
-if(!calculateCartQuantity() ){
-  document.querySelector('.cart-quantity').innerHTML=``;
-}else{
-  document.querySelector('.cart-quantity').innerHTML= calculateCartQuantity();
-}
+
+
+// if(!calculateCartQuantity() ){
+//   document.querySelector('.cart-quantity').innerHTML=``;
+// }else{
+//   document.querySelector('.cart-quantity').innerHTML= calculateCartQuantity();
+// }
+
+loadProducts(renderProductsGrid);
+
+function renderProductsGrid(){
 
 let productsHtml = '';
 
-// display buttons in the home page 
+// display product in the home page 
 products.forEach(product => {
     productsHtml += `
         <div class="product">
@@ -101,4 +107,4 @@ document.querySelectorAll('.add-to-cart-button').forEach((button) => {
     });
 
 });
-
+}
