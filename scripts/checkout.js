@@ -6,9 +6,29 @@ import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js'
 // import '../data/backend-practise.js'
 
+// async =  makes a function return a promise 
+ async function loadPage(){ 
+    console.log('load page using async function ');
+
+     await loadProductsFetch(); // wait until all products is loaded succesufully 
+
+    await  new Promise((resolve) => {  // wait to load the cart 
+        loadCart(() => {
+            resolve('cart');
+        });
+    });
+
+    renderProductsList();
+    renderPayementSummary();
+
+
+    return 'async function ';
+}
+
 // promises allows javascript to do multiple things at the same time
 
 // 1-  we can use Promise.all function to run multiple promises in the same time 
+/** 
 Promise.all([ 
     loadProductsFetch(),
     new Promise((resolve) => {
@@ -22,7 +42,7 @@ Promise.all([
     renderProductsList();
     renderPayementSummary();
 });
-
+*/
 // 2- another  way of using promises : nested then 
 /**
  * 
