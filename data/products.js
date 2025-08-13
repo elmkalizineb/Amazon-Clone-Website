@@ -92,7 +92,7 @@ object3.method();
 
 export let products =[];
 
-export function loadProducts(fun){
+export function loadProducts(renderPage){
   const xhr =  new XMLHttpRequest();
 
   xhr.addEventListener('load',()=>{ //  callback 
@@ -106,14 +106,13 @@ export function loadProducts(fun){
     });
     console.log('load products');
     // console.log('Type of fun:', typeof fun);
-    fun();
+    renderPage();
   });
 
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 }
 
-loadProducts();
 /**
  * export const products = [
   {
