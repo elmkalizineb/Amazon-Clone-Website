@@ -1,22 +1,29 @@
 import { renderProductsList } from "./checkout/orderSummary.js";
 import { renderPayementSummary } from "./checkout/payementSummary.js";
-import { loadProducts , loadProductsFetch } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 // import '../data/cart-oop.js'
 //import '../data/cart-class.js'
 // import '../data/backend-practise.js'
 
+loadPage();
 // async =  makes a function return a promise 
- async function loadPage(){ 
-    console.log('load page using async function ');
+async function loadPage() {
+    // console.log('load page using async function ');
+    try {
+        //throw 'error1';
+        await loadProductsFetch(); // wait until all products is loaded succesufully 
 
-     await loadProductsFetch(); // wait until all products is loaded succesufully 
-
-    await  new Promise((resolve) => {  // wait to load the cart 
-        loadCart(() => {
-            resolve('cart');
+        await new Promise((resolve , reject) => {  // wait to load the cart 
+            loadCart(() => {
+                reject('error3');
+                // resolve('value3');
+            });
         });
-    });
+
+    } catch (error) {
+        console.log('Unexpected error .Please try Again later ');
+    }
 
     renderProductsList();
     renderPayementSummary();
@@ -27,9 +34,9 @@ import { loadCart } from "../data/cart.js";
 
 // promises allows javascript to do multiple things at the same time
 
-// 1-  we can use Promise.all function to run multiple promises in the same time 
-/** 
-Promise.all([ 
+// 1-  we can use Promise.all function to run multiple promises in the same time
+/**
+Promise.all([
     loadProductsFetch(),
     new Promise((resolve) => {
         loadCart(() => {
@@ -43,9 +50,9 @@ Promise.all([
     renderPayementSummary();
 });
 */
-// 2- another  way of using promises : nested then 
+// 2- another  way of using promises : nested then
 /**
- * 
+ *
 new Promise((resolve) => {
     // console.log('start promise :  first step : loading products  ');
     loadProducts(() => {

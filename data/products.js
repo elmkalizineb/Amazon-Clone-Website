@@ -1,5 +1,6 @@
 import { formatCurrency } from '../scripts/utils/money.js';
 
+
 export function getProduct(productId) {
   let matchingProduct;
 
@@ -12,7 +13,13 @@ export function getProduct(productId) {
   return matchingProduct;
 }
 
-class Product {
+/*
+export function getProduct(productId) {
+  return products.find(product => product.id === productId);
+}
+*/
+
+export class Product {
   id;
   image;
   name;
@@ -41,7 +48,7 @@ class Product {
 }
 
 //inhretence
-class Clothing extends Product {
+ export class Clothing extends Product {
   sizeChartLink;
 
   constructor(productDetails) {
@@ -90,10 +97,12 @@ const object3 = {
 object3.method();
 */
 
+
 export let products = [];
 
+// load product using fetch 
 export function loadProductsFetch() {
-  const promise =  fetch('https://supersimplebackend.dev/products').then((response) => {
+  const promise = fetch('https://supersimplebackend.dev/products').then((response) => {
     // console.log(response);
     return response.json();
   }).then((productsData) => {
@@ -107,14 +116,16 @@ export function loadProductsFetch() {
     });
     console.log('load products');
     // console.log('Type of fun:', typeof fun);
-    
+
+  }).catch(() => { // handling errors in promises 
+    console.log('Unexpected error . Please try again later ');
   });
 
   return promise; // fetch return a promise 
 }
 
 //  loadProductsFetch().then(()=>{ console.log('next step ') }); // using fetch 
-
+// load products using promises 
 export function loadProducts(renderPage) {
   const xhr = new XMLHttpRequest();
 
@@ -130,6 +141,11 @@ export function loadProducts(renderPage) {
     console.log('load products');
     // console.log('Type of fun:', typeof fun);
     renderPage();
+  });
+
+  // handling errors 
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error . Please try again later ');
   });
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');

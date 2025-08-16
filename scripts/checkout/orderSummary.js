@@ -1,10 +1,11 @@
 import { cart, calculateCartQuantity, removeFromCart, updateDeliveryOption } from '../../data/cart.js';
-import { getProduct } from '../../data/products.js';
+import {  Product , Clothing , getProduct } from '../../data/products.js';
 import { formatCurrency } from '../utils/money.js';
 // dayjs external libairie (ESM version)
 // ESM = module +  js External libairie 
 import { deliveryOptions, dateToString, getDeliveryOption } from '../../data/deliveryOptions.js';
 import { renderPayementSummary } from './payementSummary.js';
+
 
 export function renderProductsList() {
 
@@ -15,6 +16,10 @@ export function renderProductsList() {
   cart.forEach((cartItem) => {
 
     const matchingProduct = getProduct(cartItem.productId);
+
+    console.log(matchingProduct);
+    console.log(matchingProduct instanceof Product);
+    console.log(typeof matchingProduct.getPrice);
 
     // get the  delivery option selected  
     const deliveryOptionId = cartItem.deliveryOptionId;
